@@ -6,6 +6,7 @@ import com.test.entities.City;
 import com.test.entities.Person;
 import com.test.repositories.CityRepository;
 import com.test.repositories.PersonRepository;
+import com.test.repositories.ValueRepository;
 import com.test.services.PersonService;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -45,6 +46,9 @@ public class PersonControllerTest {
 
 
     @Autowired
+    ValueRepository valueRepository;
+
+    @Autowired
     private MockMvc mvc;
 
     @Before
@@ -53,8 +57,10 @@ public class PersonControllerTest {
         person.setName("Name -----");
         person.setAge(10);
         personService.createPerson(person);*/
+        valueRepository.deleteAll();
         personRepository.deleteAll();
         cityRepository.deleteAll();
+
     }
 
     @BeforeClass
